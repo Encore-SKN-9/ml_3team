@@ -49,8 +49,8 @@ import seaborn as sns
 
 | 사양               | 서버 1                      | 서버 2(랩탑)   수정하기                |
 |--------------------|-----------------------------|-----------------------------|
-| **CPU**            | Intel Core i7 11th Gen       | AMD Ryzen 9 5900X           |
-| **RAM**            | 32GB DDR4                   | 32GB DDR4                   |
-| **Storage**        | 512GB SSD                   | 1TB SSD                     |
-| **Operating System**| window11 home                | Ubuntu 22.04                |
-| **GPU**            | NVIDIA RTX 3050           | NVIDIA RTX 3080             |
+| **CPU**            | Intel Core i7 11th Gen       | Intel Core i5 13th Gen           |
+| **RAM**            | 32GB                       | 32GB                    |
+| **Storage**        | 512GB SSD                   |512GB SSD                       |
+| **Operating System**| window                  | window                 |
+| **GPU**            | NVIDIA RTX 3050           | iris(R) Xe Graphics            |
