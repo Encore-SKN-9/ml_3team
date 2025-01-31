@@ -45,14 +45,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 ```
-### 실험 결과
-# Bitcoin Price Prediction - Model Comparison
+## 🖥️ Server Specifications (서버 사양)
 
-## 모델 비교
-
-| **모델**                | **사용된 알고리즘**         | **하이퍼파라미터 튜닝** | **RMSE**   | **주요 특징** |
-|-----------------------|-------------------------|----------------------|-----------|-------------|
-| **1. XGBoost (기본)**   | XGBoost                  | 없음                   | 𝑅𝑀𝑆𝐸: 839.1638782705273 | - 기본 XGBoost 회귀 모델<br> - 기본 학습률과 트리 개수 |
-| **2. XGBoost (GridSearch)** | XGBoost                  | `n_estimators`, `learning_rate` (GridSearchCV 사용) | 𝑅𝑀𝑆𝐸: 50.33194281465232 | - `GridSearchCV`로 최적 파라미터 튜닝<br> - 교차 검증을 통한 최적화 |
-| **3. Random Forest**     | 랜덤 포레스트 (RandomForestRegressor) | 없음                   | 𝑅𝑀𝑆𝐸: 35.96528975058352 | - 앙상블 모델<br> - 여러 트리를 결합하여 예측<br> - 비선형 관계에 강함 |
-
+| 사양               | 서버 1                      | 서버 2(랩탑)   수정하기                |
+|--------------------|-----------------------------|-----------------------------|
+| **CPU**            | Intel Core i7 11th Gen       | Intel Core i5 13th Gen           |
+| **RAM**            | 32GB                       | 32GB                    |
+| **Storage**        | 512GB SSD                   |512GB SSD                       |
+| **Operating System**| window                  | window                 |
+| **GPU**            | NVIDIA RTX 3050           | iris(R) Xe Graphics            |
