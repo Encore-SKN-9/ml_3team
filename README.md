@@ -1,4 +1,4 @@
-# SKN09 - EDA 3Team
+# SKN09 - ML 3Team
 
 > **SK Networks AI CAMP 9기**  
 > **개발기간:** 2025.01.22 ~ 2025.02.02  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📢 Team Introduction (**경제 콜럼버스 (SKN09-eda-3Team)**)
+## 📢 Team Introduction (**경제 콜럼버스 (SKN09-ML-3Team)**)
 | 이름      | GitHub ID                          |
 |-----------|------------------------------------|
 | 🧑‍💻 김정훈  | [@Zayden0815](https://github.com/Zayden0815) |
