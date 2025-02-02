@@ -145,6 +145,107 @@ from lightgbm import LGBMRegressor
 | S&P 500 | 47.46  | 3,449.39 | 0.9448 |
 
 ---
+### Linear Regression, Gradient Boosting, Random Forest 3가지 모델 학습 및 예측 
+
+## 모델 학습 및 평가 결과 (단일 변수(Price_snp사용))
+### Linear Regression
+![BTC_Linear_Regression](image/BTC_Linear%20Regression.png)
+### Gradient Boosting
+![BTC_Gradient_Boostiing](image/BTC_Gradient%20Boosting.png)
+### Random Forest
+![BTC_Random_Forest](image/BTC_Random%20Forest.png)
+
+📈 결과 
+-R² Score 매우 낮음 (음수)
+|MODEL             | Mean Squared Error (MSE)  | R² Score |
+|------------------|---------------------------|----------|
+|Linear Regression | 47,398,364.45             | -23.29   |
+|Gradient Boosting | 9,119,963.96              | -3.67    |
+|Random Forest     | 6,616,306.57              | -2.39    |
+
+📌 문제점:
+- 단일 변수를 사용하여 복잡한 금융 데이터를 예측하려고 했기 때문에 예측력이 부족함.
+- R² Score가 음수로, 모델이 패턴을 제대로 학습하지 못함.
+
+### 2단계: 특성 확장 및 데이터 정규화
+ - 설명: 변동률(Change %), 이동 평균(MA7, MA14), 과거 3일치 가격(Lag_1, Lag_2, Lag_3) 추가.
+ - 데이터 정규화 (StandardScaler, MinMaxScaler) 적용하여 학습 안정성 증가
+### Linear Regression
+![BTC_Linear_Regression](image/2.BTC_Linear%20Regression_fix.png)
+### Gradient Boosting
+![BTC_Gradient_Boostiing](image/2.BTC_Gradient%20Boosting_fix.png)
+### Random Forest
+![BTC_Random_Forest](image/2.BTC_Random%20Forest_fix.png)
+
+📈 결과
+|MODEL             | Mean Squared Error (MSE)  | R² Score |
+|------------------|---------------------------|----------|
+|Linear Regression | 9,348,282.23              | 0.65     |
+|Gradient Boosting | 113,742,884.52            | 0.75     |
+|Random Forest     | 90,489,079.20             | 0.89     |
+
+📌 개선 사항:
+
+- 추가된 특성 덕분에 모델이 데이터 패턴을 학습하기 시작함.
+- Gradient Boosting과 Random Forest의 성능이 일부 개선됨.
+
+### 3단계: 하이퍼파라미터 튜닝
+- 설명:
+   - Gradient Boosting: n_estimators=300, learning_rate=0.01, max_depth=6, subsample=0.8 조정.
+   - Random Forest: n_estimators=300, max_depth=15, min_samples_split=5
+### Linear Regression BTC
+![BTC_Linear_Regression](image/3.BTC_Linear%20Regression_fix.png)
+### Gradient Boosting BTC
+![BTC_Gradient_Boostiing](image/3.BTC_Gradient%20Boosting_fix.png)
+### Random Forest BTC
+![BTC_Random_Forest](image/3.BTC_Random%20Forest_fix.png)
+### Linear Regression SNPE
+![SNPE_Linear_Regression](image/3.SNPE_Linear%20Regression_fix.png)
+### Gradient Boosting SNPE
+![SNPE_Gradient_Boostiing](image/3.SNPE_Gradient%20Boosting_fix.png)
+### Random Forest SNPE
+![SNPE_Random_Forest](image/3.SNPE_Random%20Forest_fix.png)
+
+📈 결과
+|MODEL             | Mean Squared Error (MSE)  | R² Score |
+|------------------|---------------------------|----------|
+|Linear Regression | 934,828.23                | 1.00     |
+|Gradient Boosting | 125,172,899.53            | 0.77     |
+|Random Forest     | 92,435,873.56             | 0.83     |
+
+📌 개선 사항:
+- 하이퍼파라미터 튜닝을 통해 모델이 더욱 정교하게 학습.
+- Gradient Boosting의 성능이 소폭 개선되었으나 여전히 낮은 편.
+
+### 4단계 : 데이터 추가 및 시계열 데이터 강화
+- 설명:
+   - 과거 5일치 가격 (Lag_1 ~ Lag_5) 추가.
+   - 변동성(Volatility), 모멘텀(Momentum) 등 추가 특성 생성.
+   - 학습 데이터 개수 증가.
+   - 기존 80:20 Train/Test Split 대신 전체 데이터를 학습.
+### Linear Regression BTC
+![BTC_Linear_Regression](image/4.BTC_Linear%20Regression_fix_FINAL.png)
+### Gradient Boosting BTC
+![BTC_Gradient_Boostiing](image/4.BTC_Gradient%20Boosting_fix_FINAL.png)
+### Random Forest BTC
+![BTC_Random_Forest](image/4.BTC_Random%20Forest_fix_FINAL.png)
+### Linear Regression SNPE
+![SNPE_Linear_Regression](image/4.SNPE_Linear%20Regression_fix_FINAL.png)
+### Gradient Boosting SNPE
+![SNPE_Gradient_Boostiing](image/4.SNPE_Gradient%20Boosting_fix_FINAL.png)
+### Random Forest SNPE
+![SNPE_Random_Forest](image/4.SNPE_Random%20Forest_fix_FINAL.png)
+
+📈 결과(BTC)
+|MODEL             | Mean Squared Error (MSE)  | R² Score |
+|------------------|---------------------------|----------|
+|Linear Regression | 832,564.86                | 1.00     |
+|Gradient Boosting | 7,537,585.30              | 0.98     |
+|Random Forest     | 274,189.22                | 1.00     |
+
+📌 최종 개선 사항:
+   - 데이터 확장과 적절한 하이퍼파라미터 튜닝을 통해 모델 성능 대폭 개선.
+   - 특히, Lag Features, Volatility, Momentum 등의 시계열 기반 특성이 예측 성능 향상에 크게 기여함.
 
 # Bitcoin Price Prediction - Model Comparison
 ### 모델 비교
